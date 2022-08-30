@@ -18,6 +18,11 @@ const Seo = ({ description = '', lang = 'en', meta = [], title, image }) => {
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
+  const isBrowser = typeof window !== "undefined"
+
+  if (!isBrowser) {
+    return (<></>);
+  }
 
   return (
     <Helmet
