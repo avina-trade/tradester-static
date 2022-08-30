@@ -18,11 +18,6 @@ const Seo = ({ description = '', lang = 'en', meta = [], title, image }) => {
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
-  const isBrowser = typeof window !== "undefined"
-
-  if (!isBrowser) {
-    return (<></>);
-  }
 
   return (
     <Helmet
@@ -75,7 +70,8 @@ const Seo = ({ description = '', lang = 'en', meta = [], title, image }) => {
         },
       ].concat(meta)}
     > 
-    <script>prefinery=window.prefinery||function(){(window.prefinery.q=window.prefinery.q||[]).push(arguments)};</script>
+    <script>{`prefinery=window.prefinery||function(){(window.prefinery.q=window.prefinery.q||[]).push(arguments)}`}
+    </script>
     <script src="https://widget.prefinery.com/widget/v2/zskjk6mq.js" defer></script>
     </Helmet>
   )
