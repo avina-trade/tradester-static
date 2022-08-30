@@ -19,6 +19,7 @@ class RootIndex extends React.Component {
           content={author.shortBio}
         />
         <ArticlePreview posts={posts} />
+        <div class='prefinery-form-embed'></div>
       </Layout>
     )
   }

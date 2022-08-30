@@ -69,7 +69,10 @@ const Seo = ({ description = '', lang = 'en', meta = [], title, image }) => {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    > 
+    <script>prefinery=window.prefinery||function(){(window.prefinery.q=window.prefinery.q||[]).push(arguments)};</script>
+    <script src="https://widget.prefinery.com/widget/v2/zskjk6mq.js" defer></script>
+    </Helmet>
   )
 }
 
