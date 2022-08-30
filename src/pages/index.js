@@ -1,28 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql } from 'gatsby'
-import get from 'lodash/get'
 
 import Layout from '../components/layout'
-import Hero from '../components/hero'
 import ArticlePreview from '../components/article-preview'
 
-class RootIndex extends React.Component {
-  render() {
-    const posts = get(this, 'props.data.allContentfulBlogPost.nodes')
-    const [author] = get(this, 'props.data.allContentfulPerson.nodes')
+const RootIndex = ({ data }) => {
+  const posts = data.allContentfulBlogPost.nodes
 
-    return (
-      <Layout location={this.props.location}>
-        <Hero
-          image={author.heroImage.gatsbyImage}
-          title={author.name}
-          content={author.shortBio}
-        />
-        <ArticlePreview posts={posts} />
-        <div class='prefinery-form-embed'></div>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <div className="prefinery-form-embed"></div>
+      <ArticlePreview posts={posts} />
+    </Layout>
+  )
 }
 
 export default RootIndex
@@ -45,24 +35,6 @@ export const pageQuery = graphql`
         }
         description {
           raw
-        }
-      }
-    }
-    allContentfulPerson(
-      filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
-    ) {
-      nodes {
-        name
-        shortBio {
-          raw
-        }
-        title
-        heroImage: image {
-          gatsbyImage(
-            layout: CONSTRAINED
-            placeholder: BLURRED
-            width: 1180
-          )
         }
       }
     }
